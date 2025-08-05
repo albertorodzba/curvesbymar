@@ -1,7 +1,7 @@
 import { IProductCatalogRepository } from "../../domain/Repositories/IProductCatalogRepository";
 
 export class ProductCatalogRepository implements IProductCatalogRepository {
-  getProducts(): any {
+  findAll(): any {
     return "hola mundo";
   }
 }
