@@ -1,6 +1,6 @@
 export class Collection {
   constructor(
-    private readonly collectionId: number,
+    private readonly id: number,
     private name: string,
   ) {
     if (!this.isEmptyName(name)) {
