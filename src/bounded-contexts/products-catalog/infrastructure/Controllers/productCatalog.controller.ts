@@ -1,10 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { CreateProductCatalogDto } from "../dto/create-product-catalog.dto";
 import { UpdateProductCatalogDto } from "../dto/update-product-catalog.dto";
+import { ProductCatalogRepository } from "../Persistence/ProductCatalogRepository";
 
 @Controller("product-catalog")
 export class ProductCatalogController {
-  // constructor(private readonly productCatalogService: ProductCatalogService) {}
+  constructor(private readonly productCatalogRepo: ProductCatalogRepository) {}
 
   @Post()
   create(@Body() createProductCatalogDto: CreateProductCatalogDto) {
@@ -13,9 +14,9 @@ export class ProductCatalogController {
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     // return this.productCatalogService.findAll();
-    return "HOLA YA ENCONTRASTE EL ENDOOINT DE CATALOG";
+    return await this.productCatalogRepo.findAll();
   }
 
   @Get(":id")
