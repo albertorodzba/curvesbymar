@@ -5,6 +5,7 @@ import { ProductEntity } from "./infrastructure/Entities/Product.entity";
 import { CollectionEntity } from "./infrastructure/Entities/Collection.entity";
 import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCatalogRepository";
 
+
 @Module({
   controllers: [ProductCatalogController],
   imports: [TypeOrmModule.forFeature([ ProductEntity, CollectionEntity])],

@@ -1,7 +1,7 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ProductEntity } from "./Product.entity";
 
-@Entity()
+@Entity({ name: "collections" })
 export class CollectionEntity {
   @PrimaryGeneratedColumn("increment")
   Id: number;

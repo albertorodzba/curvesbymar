@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
 // import { Category } from "./0";
 import { CollectionEntity } from './Collection.entity';
 
-@Entity()
+@Entity({ name: "products"})
 export class ProductEntity {
   @PrimaryGeneratedColumn("increment")
   Id: number

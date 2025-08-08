@@ -1,11 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nestjs/common";
 import { CreateProductCatalogDto } from "../dto/create-product-catalog.dto";
 import { UpdateProductCatalogDto } from "../dto/update-product-catalog.dto";
-import { ProductCatalogRepository } from "../Persistence/ProductCatalogRepository";
+import { IProductCatalogRepository } from "../../domain/Repositories/IProductCatalogRepository";
 
 @Controller("product-catalog")
 export class ProductCatalogController {
-  constructor(private readonly productCatalogRepo: ProductCatalogRepository) {}
+  constructor(
+    @Inject("IProductCatalogRepository")
+    private readonly productCatalogRepo: IProductCatalogRepository
+  ) {}
 
   @Post()
   create(@Body() createProductCatalogDto: CreateProductCatalogDto) {
