@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
 // import { Category } from "./0";
-import { Collection } from "./Collection.entity";
+import { CollectionEntity } from './Collection.entity';
 
 @Entity()
-export class Product {
+export class ProductEntity {
   @PrimaryGeneratedColumn("increment")
   Id: number
 
@@ -31,6 +31,6 @@ export class Product {
   @Column()
   Stock: number
 
-  @ManyToMany(() => Collection, (collection) => collection.Products)
-  Collections: Collection[]
+  @ManyToMany(() => CollectionEntity, (collection) => collection.Products)
+  Collections: CollectionEntity[]
 }

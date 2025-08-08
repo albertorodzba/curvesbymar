@@ -1,12 +1,14 @@
 import { IProductCatalogRepository } from "../../domain/Repositories/IProductCatalogRepository";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Product } from "../Entities/Product.entity";
+import { ProductEntity } from "../Entities/Product.entity";
 import { Repository } from "typeorm";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class ProductCatalogRepository implements IProductCatalogRepository {
   constructor(
-    @InjectRepository(Product)
-    private readonly productRepository: Repository<Product>,
+    @InjectRepository(ProductEntity)
+    private readonly productRepository: Repository<ProductEntity>,
   ){}
 
   async findAll(): Promise<any> {
