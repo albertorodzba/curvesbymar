@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nestjs/common";
 import { CreateProductCatalogDto } from "../dto/create-product-catalog.dto";
 import { UpdateProductCatalogDto } from "../dto/update-product-catalog.dto";
-import { IProductCatalogRepository } from "../../domain/Repositories/IProductCatalogRepository";
+import { IProductCatalogRepository } from "../../domain/ports/out/IProductCatalogRepository";
 
 @Controller("product-catalog")
 export class ProductCatalogController {
