@@ -2,12 +2,14 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nest
 import { CreateProductCatalogDto } from "../dto/create-product-catalog.dto";
 import { UpdateProductCatalogDto } from "../dto/update-product-catalog.dto";
 import { IProductCatalogRepository } from "../../domain/ports/out/IProductCatalogRepository";
+import { IGetCatalogUseCase} from "../../application/ports/in/IGetCatalogUseCase";
 
 @Controller("product-catalog")
 export class ProductCatalogController {
   constructor(
     @Inject("IProductCatalogRepository")
-    private readonly productCatalogRepo: IProductCatalogRepository
+    private readonly productCatalogRepo: IProductCatalogRepository,
+    @Inject("IGetCatalogUseCase") private readonly getCatalogUseCase: IGetCatalogUseCase
   ) {}
 
   @Post()
@@ -19,7 +21,7 @@ export class ProductCatalogController {
   @Get()
   async findAll() {
     // return this.productCatalogService.findAll();
-    return await this.productCatalogRepo.findAll();
+    return await this.getCatalogUseCase.run();
   }
 
   @Get(":id")

@@ -4,5 +4,5 @@
 import { Product } from "../../../domain/Entities/Product";
 
 export interface IGetCatalogUseCase {
-  getCatalog(): Product[];
+  run(): Promise<Product[]>;
 }

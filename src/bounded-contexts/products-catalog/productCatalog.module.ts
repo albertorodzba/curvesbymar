@@ -4,6 +4,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { ProductEntity } from "./infrastructure/Entities/Product.entity";
 import { CollectionEntity } from "./infrastructure/Entities/Collection.entity";
 import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCatalogRepository";
+import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetCatalogUseCase";
 
 
 @Module({
@@ -13,7 +14,11 @@ import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCa
     {
       provide: "IProductCatalogRepository",
       useClass: ProductCatalogRepository,
-    }
+    },
+    {
+      provide: "IGetCatalogUseCase",
+      useClass: GetCatalogUseCase,
+    },
   ],
 })
 export class ProductCatalogModule {}
