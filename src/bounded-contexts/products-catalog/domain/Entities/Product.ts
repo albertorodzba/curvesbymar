@@ -2,8 +2,8 @@ import { Collection } from "./Collection";
 import { Category } from "./Category";
 
 export class Product {
+  private readonly id: number;
   constructor(
-    private readonly id: number,
     private categories: Category[],
     private colors: string[],
     private details: string,

@@ -7,8 +7,8 @@ export class Collection {
       this.name = name;
     }
   }
-
-  isEmptyName(name: string): boolean {
-    return name === undefined || name.length === 0;
-  }
+  //
+  // isEmptyName(name: string): boolean {
+  //   return name === undefined || name.length === 0;
+  // }
 }
