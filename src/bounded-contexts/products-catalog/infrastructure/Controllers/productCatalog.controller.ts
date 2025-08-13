@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nestjs/common";
-import { CreateProductCatalogDto } from "../dto/create-product-catalog.dto";
-import { UpdateProductCatalogDto } from "../dto/update-product-catalog.dto";
-import { IProductCatalogRepository } from "../../domain/ports/out/IProductCatalogRepository";
+import { CreateProductRequestDto } from "../../application/DTOs/CreateProductRequest.dto";
+import { CreateProductResponseDto } from "../../application/DTOs/CreateProductResponse.dto";
+import { IProductCatalogRepository } from "../../domain/Ports/out/IProductCatalogRepository";
 import { IGetCatalogUseCase} from "../../application/ports/in/IGetCatalogUseCase";
 
 @Controller("product-catalog")
@@ -13,7 +13,7 @@ export class ProductCatalogController {
   ) {}
 
   @Post()
-  create(@Body() createProductCatalogDto: CreateProductCatalogDto) {
+  create(@Body() createProductCatalogDto: CreateProductRequestDto) {
     // return this.productCatalogService.create(createProductCatalogDto);
     return "";
   }
@@ -31,7 +31,7 @@ export class ProductCatalogController {
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() updateProductCatalogDto: UpdateProductCatalogDto,
+  update(@Param("id") id: string, @Body() updateProductCatalogDto: CreateProductResponseDto,
   ) {
     // return this.productCatalogService.update(+id, updateProductCatalogDto);
     return "";

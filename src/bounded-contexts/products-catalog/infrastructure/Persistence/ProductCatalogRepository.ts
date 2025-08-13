@@ -1,4 +1,4 @@
-import { IProductCatalogRepository } from "../../domain/ports/out/IProductCatalogRepository";
+import { IProductCatalogRepository } from "../../domain/Ports/out/IProductCatalogRepository";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ProductEntity } from "../Entities/Product.entity";
 import { Repository } from "typeorm";

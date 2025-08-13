@@ -1,14 +1,14 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
-// import { Category } from "./0";
 import { CollectionEntity } from './Collection.entity';
+import { CategorytEntity } from "./Category.entity";
 
-@Entity({ name: "products"})
+@Entity({ name: "product"})
 export class ProductEntity {
   @PrimaryGeneratedColumn("increment")
   Id: number
 
-  // @Column()
-  // categories: Category
+  @Column()
+  Categories: CategorytEntity
 
   @Column()
   Colors: string

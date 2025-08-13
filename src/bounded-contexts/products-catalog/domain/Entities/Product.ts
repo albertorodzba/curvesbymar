@@ -3,11 +3,11 @@ import { Category } from "./Category";
 
 export class Product {
   readonly id: number;
-  categories: Category[];
-  colors: string[];
-  details: string;
-  image: string;
   name: string;
+  details: string;
+  colors: string;
+  image: string;
+  categories: Category[];
   price: number;
   sku: string;
   stock: number;
