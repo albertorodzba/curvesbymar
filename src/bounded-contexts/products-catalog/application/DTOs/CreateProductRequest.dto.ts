@@ -6,9 +6,9 @@ export class CreateProductRequestDto {
   detail: string;
   colors: string;
   price: number;
-  imageUrl: string;
-  sku: string;
-  stock: number;
-  categories: Category[] | [] | undefined | null;
-  collection: Collection[] | [] | undefined | null;
+  imageUrl?: string;
+  sku?: string;
+  stock?: number;
+  categories?: Category[];
+  collection?: Collection[];
 }

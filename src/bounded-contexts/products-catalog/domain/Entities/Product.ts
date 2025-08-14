@@ -19,20 +19,20 @@ export class Product {
     detail: string,
     colors: string,
     price: number,
-    sku?: string,
-    stock?: number,
-    collection?: Collection[],
-    imageUrl?: string,
-    categories?: Category[],
+    sku: string = "",
+    stock: number = 0,
+    collection: Collection[] = [],
+    imageUrl: string = "",
+    categories: Category[] = [],
   ) {
     this.name = name;
     this.detail = detail;
     this.colors = colors;
-    this.imageUrl = imageUrl ?? "";
+    this.imageUrl = imageUrl;
     this.price = price;
-    this.sku = sku ?? "";
-    this.stock = stock ?? 0;
-    this.collection = collection ?? [];
-    this.categories = categories ?? [];
+    this.sku = sku;
+    this.stock = stock;
+    this.collection = collection;
+    this.categories = categories;
   }
 }

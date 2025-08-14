@@ -1,6 +1,12 @@
 export class Category {
+  id: number;
+  name: string;
+
   constructor(
-    private readonly categoryId: string,
-    private name: string,
-  ) {}
+    id: number,
+    name: string,
+  ) {
+    this.id = id;
+    this.name = name;
+  }
 }
