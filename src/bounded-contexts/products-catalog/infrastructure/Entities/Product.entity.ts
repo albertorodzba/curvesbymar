@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { CollectionEntity } from './Collection.entity';
 import { CategorytEntity } from "./Category.entity";
 
@@ -7,30 +7,36 @@ export class ProductEntity {
   @PrimaryGeneratedColumn("increment")
   Id: number
 
-  @Column()
-  Categories: CategorytEntity
-
-  @Column()
+  @Column( { nullable: false })
   Colors: string
 
-  @Column()
-  Details: string
+  @Column({ nullable: false, default: "" })
+  Detail: string
 
-  @Column()
+  @Column({ nullable: true, default: "" })
   ImageUrl: string
 
-  @Column()
+  @Column({ nullable: false })
   Name: string
 
-  @Column()
+  @Column({ nullable: false, default: 0 })
   UnitPrice: number
 
-  @Column()
+  @Column({ nullable: true })
   Sku: string
 
-  @Column()
+  @Column({ nullable: true, default: 0 })
   Stock: number
 
+  @Column({ nullable: false, default: new Date()   })
+  CreatedAt: Date
+
   @ManyToMany(() => CollectionEntity, (collection) => collection.Products)
+  @JoinTable({ name: "product_collections"})
   Collections: CollectionEntity[]
+
+  @ManyToMany(() => CategorytEntity, (category) => category.Products)
+  @JoinTable({ name: "product_categories"})
+  Categories: CategorytEntity
+
 }

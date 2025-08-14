@@ -4,30 +4,35 @@ import { Category } from "./Category";
 export class Product {
   readonly id: number;
   name: string;
-  details: string;
+  detail: string;
   colors: string;
-  image: string;
+  imageUrl: string;
   categories: Category[];
   price: number;
   sku: string;
   stock: number;
-  collection: Collection;
+  collection: Collection[];
+
 
   constructor(
-    colors: string[],
-    details: string,
-    image: string,
     name: string,
+    detail: string,
+    colors: string,
     price: number,
-    sku: string,
-    stock: number
+    sku?: string,
+    stock?: number,
+    collection?: Collection[],
+    imageUrl?: string,
+    categories?: Category[],
   ) {
-    this.colors   = colors;
-    this.details  = details;
-    this.image    = image;
-    this.name     = name;
-    this.price    = price;
-    this.sku      = sku;
-    this.stock    = stock
+    this.name = name;
+    this.detail = detail;
+    this.colors = colors;
+    this.imageUrl = imageUrl ?? "";
+    this.price = price;
+    this.sku = sku ?? "";
+    this.stock = stock ?? 0;
+    this.collection = collection ?? [];
+    this.categories = categories ?? [];
   }
 }

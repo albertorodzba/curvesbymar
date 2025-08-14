@@ -14,7 +14,10 @@ export class CreateProductUseCase implements ICreateProductUseCase {
   //Todo: Aqui va un DTO desde el controller
   run(product: CreateProductRequestDto): void {
 
-    const newProduct = new Product(product.categories, product.colors, product.details, product.image, product.name, product.price, product.sku, product.stock, product.collection);
+    const newProduct = new Product(
+      product.name, product.detail,
+      product.colors, product.price,
+      product.sku);
     this.productCatalogRepository.create(newProduct);
   }
 }
