@@ -1,5 +1,5 @@
-import { Product} from "../../../domain/Entities/Product";
+import { CreateProductRequestDto } from "../../DTOs/CreateProductRequest.dto";
 
 export interface ICreateProductUseCase {
-  run(product: Product): void;
+  run(product: CreateProductRequestDto): void;
 }

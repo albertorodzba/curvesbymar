@@ -1,14 +1,16 @@
 export class Collection {
+  readonly id: number;
+  name: string;
+
   constructor(
-    private readonly id: number,
-    private name: string,
+    name: string,
   ) {
     if (!this.isEmptyName(name)) {
       this.name = name;
     }
   }
-  //
-  // isEmptyName(name: string): boolean {
-  //   return name === undefined || name.length === 0;
-  // }
+
+  isEmptyName(name: string): boolean {
+    return name === undefined || name.length === 0;
+  }
 }

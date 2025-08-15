@@ -18,7 +18,7 @@ export class CreateProductUseCase implements ICreateProductUseCase {
       product.name, product.detail,
       product.colors, product.price,
       product.sku, product.stock,
-      [new Collection()]
+
       );
     this.productCatalogRepository.create(newProduct);
   }
