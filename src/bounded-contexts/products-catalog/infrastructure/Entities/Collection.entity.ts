@@ -6,7 +6,7 @@ export class CollectionEntity {
   @PrimaryGeneratedColumn("increment")
   Id: number;
 
-  @Column()
+  @Column({ nullable: false, default: "" })
   Name: string;
 
   @ManyToMany(() => ProductEntity, (product) => product.Collections)

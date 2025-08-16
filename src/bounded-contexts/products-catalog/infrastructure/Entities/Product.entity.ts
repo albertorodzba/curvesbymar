@@ -5,7 +5,7 @@ import { CategorytEntity } from "./Category.entity";
 @Entity({ name: "product"})
 export class ProductEntity {
   @PrimaryGeneratedColumn("increment")
-  Id: number
+  private Id: number
 
   @Column( { nullable: false })
   Colors: string

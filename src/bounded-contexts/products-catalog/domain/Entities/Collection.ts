@@ -4,10 +4,10 @@ export class Collection {
 
   constructor(
     name: string,
+    id?: number,
   ) {
-    if (!this.isEmptyName(name)) {
-      this.name = name;
-    }
+    if (!this.isEmptyName(name)) this.name = name;
+    if (id) this.id = id;
   }
 
   isEmptyName(name: string): boolean {

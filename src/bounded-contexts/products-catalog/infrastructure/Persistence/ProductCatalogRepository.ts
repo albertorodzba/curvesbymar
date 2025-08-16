@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ProductEntity } from "../Entities/Product.entity";
 import { Repository } from "typeorm";
 import { Injectable } from "@nestjs/common";
+import { Product } from "../../domain/Entities/Product";
 
 @Injectable()
 export class ProductCatalogRepository implements IProductCatalogRepository {
@@ -11,7 +12,12 @@ export class ProductCatalogRepository implements IProductCatalogRepository {
     private readonly productRepository: Repository<ProductEntity>,
   ){}
 
-  async findAll(): Promise<any> {
-    return await this.productRepository.findBy({ Id: 1 });
+  async findAll(): Promise<Product[]> {
+    return await this.productRepository.find();
+  }
+
+  create(product: Product): Promise<void> {
+    const productEntity: ProductEntity = new ProductEntity();
+    return this.productRepository.create();
   }
 }

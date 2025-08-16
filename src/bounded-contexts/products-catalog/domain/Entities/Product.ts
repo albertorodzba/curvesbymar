@@ -24,7 +24,9 @@ export class Product {
     collection: Collection[] = [],
     imageUrl: string = "",
     categories: Category[] = [],
+    id?: number,
   ) {
+    if (id) this.id = id;
     this.name = name;
     this.detail = detail;
     this.colors = colors;

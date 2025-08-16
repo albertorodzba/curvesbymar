@@ -5,6 +5,7 @@ import { ProductEntity } from "./infrastructure/Entities/Product.entity";
 import { CollectionEntity } from "./infrastructure/Entities/Collection.entity";
 import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCatalogRepository";
 import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetCatalogUseCase";
+import { CategoryRepository } from "./infrastructure/Persistence/CategoryRepository";
 
 
 @Module({
@@ -19,6 +20,10 @@ import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetC
       provide: "IGetCatalogUseCase",
       useClass: GetCatalogUseCase,
     },
+    {
+      provide: "ICategoryRepository",
+      useClass: CategoryRepository
+    }
   ],
 })
 export class ProductCatalogModule {}
