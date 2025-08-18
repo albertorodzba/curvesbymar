@@ -1,6 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { CollectionEntity } from './Collection.entity';
 import { CategorytEntity } from "./Category.entity";
+import { Product } from "../../domain/Entities/Product";
+import { Category } from "../../domain/Entities/Category";
 
 @Entity({ name: "product"})
 export class ProductEntity {
@@ -28,7 +30,7 @@ export class ProductEntity {
   @Column({ nullable: true, default: 0 })
   Stock: number
 
-  @Column({ nullable: false, default: new Date()   })
+  @Column({ nullable: false, default: new Date() })
   CreatedAt: Date
 
   @ManyToMany(() => CollectionEntity, (collection) => collection.Products)
@@ -37,6 +39,34 @@ export class ProductEntity {
 
   @ManyToMany(() => CategorytEntity, (category) => category.Products)
   @JoinTable({ name: "product_categories"})
-  Categories: CategorytEntity
+  Categories: CategorytEntity[]
 
+  // Mapper
+  toEntityDomain(product: ProductEntity): Product {
+    return new Product(
+      product.Name,
+      product.Detail,
+      product.Colors,
+      product.UnitPrice,
+      product.Sku,
+      product.Stock,
+      product.Collections.map((collection) => collection.toDomainEntity(collection)),
+      product.ImageUrl,
+      product.Categories.map((category) => category.toDomainEntity(category)),
+      product.Id);
+  }
+
+  toEntityRepository(product: Product): ProductEntity {
+    const productEntity = new ProductEntity()
+    productEntity.Colors = product.colors;
+    productEntity.Detail = product.detail;
+    productEntity.ImageUrl = product.imageUrl;
+    productEntity.Name = product.name;
+    productEntity.UnitPrice = product.unitPrice;
+    productEntity.Sku = product.sku;
+    productEntity.Stock = product.stock;
+    productEntity.Collections = product.collection;
+    productEntity.Categories = product.categories;
+    return productEntity;
+  }
 }

@@ -13,7 +13,10 @@ export class ProductCatalogRepository implements IProductCatalogRepository {
   ){}
 
   async findAll(): Promise<Product[]> {
-    return await this.productRepository.find();
+    const products: ProductEntity[] = await this.productRepository.find({
+      relations: ["Collections", "Categories"],
+    });
+    return products.map((product) => product.toEntityDomain(product));
   }
 
   create(product: Product): Promise<void> {

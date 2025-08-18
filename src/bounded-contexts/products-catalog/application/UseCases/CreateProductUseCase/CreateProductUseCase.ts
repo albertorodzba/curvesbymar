@@ -11,7 +11,6 @@ export class CreateProductUseCase implements ICreateProductUseCase {
   constructor(@Inject("IProductCatalogRepository") private readonly productCatalogRepository: IProductCatalogRepository) {
   }
 
-  //Todo: Aqui va un DTO desde el controller
   run(product: CreateProductRequestDto): void {
 
     const newProduct = new Product(

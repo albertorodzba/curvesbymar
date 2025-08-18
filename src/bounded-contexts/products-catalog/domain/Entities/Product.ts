@@ -8,7 +8,7 @@ export class Product {
   colors: string;
   imageUrl: string;
   categories: Category[];
-  price: number;
+  unitPrice: number;
   sku: string;
   stock: number;
   collection: Collection[];
@@ -18,7 +18,7 @@ export class Product {
     name: string,
     detail: string,
     colors: string,
-    price: number,
+    unitPrice: number,
     sku: string = "",
     stock: number = 0,
     collection: Collection[] = [],
@@ -31,10 +31,14 @@ export class Product {
     this.detail = detail;
     this.colors = colors;
     this.imageUrl = imageUrl;
-    this.price = price;
+    this.unitPrice = unitPrice;
     this.sku = sku;
     this.stock = stock;
     this.collection = collection;
     this.categories = categories;
+  }
+
+  modifyUnitPrice(unitPrice: number) {
+    this.unitPrice = unitPrice;
   }
 }

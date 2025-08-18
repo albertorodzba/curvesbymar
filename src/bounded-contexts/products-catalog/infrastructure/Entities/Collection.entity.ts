@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ProductEntity } from "./Product.entity";
+import { Collection } from "../../domain/Entities/Collection";
 
 @Entity({ name: "collection" })
 export class CollectionEntity {
@@ -11,4 +12,8 @@ export class CollectionEntity {
 
   @ManyToMany(() => ProductEntity, (product) => product.Collections)
   Products: ProductEntity[];
+
+  toDomainEntity(collection: CollectionEntity): Collection {
+    return new Collection( collection.Name, collection.Id );
+  }
 }

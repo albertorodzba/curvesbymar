@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
 import { ProductEntity } from "./Product.entity";
+import { Category } from "../../domain/Entities/Category";
 
 @Entity({ name: "category"})
 export class CategorytEntity {
@@ -11,4 +12,8 @@ export class CategorytEntity {
 
   @ManyToMany(() => ProductEntity, (products) => products.Categories)
   Products: ProductEntity[];
+
+  toDomainEntity(category: CategorytEntity): Category {
+    return new Category(category.Name, category.Id);
+  }
 }
