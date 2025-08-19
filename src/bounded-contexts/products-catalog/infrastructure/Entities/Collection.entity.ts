@@ -16,4 +16,11 @@ export class CollectionEntity {
   toDomainEntity(collection: CollectionEntity): Collection {
     return new Collection( collection.Name, collection.Id );
   }
+
+  fromDomain(collection: Collection): CollectionEntity {
+    const collectionEntity: CollectionEntity = new CollectionEntity();
+    collectionEntity.Name = collection.name;
+    collectionEntity.Id = collection.id;
+    return collectionEntity;
+  }
 }

@@ -16,4 +16,11 @@ export class CategorytEntity {
   toDomainEntity(category: CategorytEntity): Category {
     return new Category(category.Name, category.Id);
   }
+
+  fromDomain(category: Category): CategorytEntity {
+    const categoryEntity: CategorytEntity = new CategorytEntity();
+    categoryEntity.Id = category.id;
+    categoryEntity.Name = category.name;
+    return categoryEntity;
+  }
 }

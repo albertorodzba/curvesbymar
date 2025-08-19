@@ -56,7 +56,7 @@ export class ProductEntity {
       product.Id);
   }
 
-  toEntityRepository(product: Product): ProductEntity {
+  fromDomain(product: Product): ProductEntity {
     const productEntity = new ProductEntity()
     productEntity.Colors = product.colors;
     productEntity.Detail = product.detail;
@@ -65,8 +65,8 @@ export class ProductEntity {
     productEntity.UnitPrice = product.unitPrice;
     productEntity.Sku = product.sku;
     productEntity.Stock = product.stock;
-    productEntity.Collections = product.collection;
-    productEntity.Categories = product.categories;
+    productEntity.Collections = product.collection.map((collection) => new CollectionEntity().fromDomain(collection)); // todo: hacer estatico el metodo de collection entity
+    productEntity.Categories = product.categories.map((category) => new CategorytEntity().fromDomain(category));
     return productEntity;
   }
 }
