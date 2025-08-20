@@ -17,7 +17,7 @@ export class CategorytEntity {
     return new Category(category.Name, category.Id);
   }
 
-  fromDomain(category: Category): CategorytEntity {
+  static fromDomain(category: Category): CategorytEntity {
     const categoryEntity: CategorytEntity = new CategorytEntity();
     categoryEntity.Id = category.id;
     categoryEntity.Name = category.name;

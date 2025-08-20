@@ -65,8 +65,8 @@ export class ProductEntity {
     productEntity.UnitPrice = product.unitPrice;
     productEntity.Sku = product.sku;
     productEntity.Stock = product.stock;
-    productEntity.Collections = product.collection.map((collection) => new CollectionEntity().fromDomain(collection)); // todo: hacer estatico el metodo de collection entity
-    productEntity.Categories = product.categories.map((category) => new CategorytEntity().fromDomain(category));
+    productEntity.Collections = product.collection.map((collection) => CollectionEntity.fromDomain(collection)); // todo: hacer estatico el metodo de collection entity
+    productEntity.Categories = product.categories.map((category) => CategorytEntity.fromDomain(category));
     return productEntity;
   }
 }
