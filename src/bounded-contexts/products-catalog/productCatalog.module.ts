@@ -6,6 +6,7 @@ import { CollectionEntity } from "./infrastructure/Entities/Collection.entity";
 import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCatalogRepository";
 import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetCatalogUseCase";
 import { CategoryRepository } from "./infrastructure/Persistence/CategoryRepository";
+import { FindOneProductUseCase } from "./application/UseCases/FindOneProductUseCase/FindOneProductUseCase";
 
 
 @Module({
@@ -23,6 +24,10 @@ import { CategoryRepository } from "./infrastructure/Persistence/CategoryReposit
     {
       provide: "ICategoryRepository",
       useClass: CategoryRepository
+    },
+    {
+      provide: "IFindOneProductUseCase",
+      useClass: FindOneProductUseCase
     }
   ],
 })
