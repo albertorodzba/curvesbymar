@@ -7,7 +7,7 @@ import { Category } from "../../domain/Entities/Category";
 @Entity({ name: "product"})
 export class ProductEntity {
   @PrimaryGeneratedColumn("increment")
-  private Id: number
+  Id: number
 
   @Column( { nullable: false })
   Colors: string
@@ -42,7 +42,7 @@ export class ProductEntity {
   Categories: CategorytEntity[]
 
   // Mapper
-  toEntityDomain(product: ProductEntity): Product {
+  static toEntityDomain(product: ProductEntity): Product {
     return new Product(
       product.Name,
       product.Detail,

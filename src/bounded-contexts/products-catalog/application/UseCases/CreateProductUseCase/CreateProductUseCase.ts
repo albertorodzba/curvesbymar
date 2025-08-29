@@ -6,19 +6,26 @@ import { Category } from "../../../domain/Entities/Category";
 import { Collection } from "../../../domain/Entities/Collection";
 import { CreateProductRequestDto } from '../../DTOs/CreateProductRequest.dto';
 import { CreateProductResponseDto } from '../../DTOs/CreateProductResponse.dto';
+import { ICategoryRepository } from "../../../domain/Ports/out/ICategoryRepository";
 
 @Injectable()
 export class CreateProductUseCase implements ICreateProductUseCase {
-  constructor(@Inject("IProductCatalogRepository") private readonly productCatalogRepository: IProductCatalogRepository) {
-  }
+  constructor(
+    @Inject("IProductCatalogRepository") private readonly productCatalogRepository: IProductCatalogRepository,
+    @Inject("ICategoryRepository") private readonly categoryRepository: ICategoryRepository
+  ) {}
 
   run(product: CreateProductRequestDto): CreateProductResponseDto {
     // buscar que categorias y collections tiene el dto
+    const categories: Category[] = this.categoryRepository.findAll(product?.categories)
+
     const newProduct = new Product(
       product.name, product.detail,
       product.colors, product.price,
       product.sku, product.stock,
-
+      undefined,
+      undefined,
+      categories,
       );
     this.productCatalogRepository.save(newProduct);
 

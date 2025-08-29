@@ -16,7 +16,7 @@ export class ProductCatalogRepository implements IProductCatalogRepository {
     const products: ProductEntity[] = await this.productRepository.find({
       relations: ["Collections", "Categories"],
     });
-    return products.map((product) => product.toEntityDomain(product));
+    return products.map((product: ProductEntity): Product => ProductEntity.toEntityDomain(product));
   }
 
   async save(product: Product): Promise<void> {
@@ -24,11 +24,11 @@ export class ProductCatalogRepository implements IProductCatalogRepository {
     await this.productRepository.save(productEntity);
   }
 
-  async findOne(id: number): Promise<ProductEntity> | null {
-    return this.productRepository.findOne({
-      where: {
-        Id: id
-      },
-      relations: ["Collections", "Categories"] });
+  async findOne(id: number): Promise<Product> {
+    const product: ProductEntity | null = await this.productRepository.findOne({
+      where: { Id: id }
+    });
+
+    if(product) return ProductEntity.toEntityDomain(product);
   }
 }

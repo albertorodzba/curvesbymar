@@ -101,3 +101,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+
+Controlador Utiliza implementacion de Interfaz caso de uso
+Caso de uso implemente intefaz y usa la implementacion del repositorio
+dominio exporta interfaz de repositorio
+repositorio implementa interfaz de dominio
