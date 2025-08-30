@@ -19,16 +19,17 @@ export class ProductCatalogRepository implements IProductCatalogRepository {
     return products.map((product: ProductEntity): Product => ProductEntity.toEntityDomain(product));
   }
 
-  async save(product: Product): Promise<void> {
-    const productEntity: ProductEntity = new ProductEntity().fromDomain(product);
-    await this.productRepository.save(productEntity);
-  }
-
-  async findOne(id: number): Promise<Product> {
+  async findOne(id: number): Promise<Product | null>{
     const product: ProductEntity | null = await this.productRepository.findOne({
       where: { Id: id }
     });
 
     if(product) return ProductEntity.toEntityDomain(product);
+    return null;
+  }
+
+  async save(product: Product): Promise<void> {
+    const productEntity: ProductEntity = new ProductEntity().fromDomain(product);
+    await this.productRepository.save(productEntity);
   }
 }

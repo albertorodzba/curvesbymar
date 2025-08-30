@@ -17,14 +17,21 @@ export class CreateProductUseCase implements ICreateProductUseCase {
 
   run(product: CreateProductRequestDto): CreateProductResponseDto {
     // buscar que categorias y collections tiene el dto
-    const categories: Category[] = this.categoryRepository.findAll(product?.categories)
+    if (product?.categories !== undefined) {
+      const categories: Category[] = this.categoryRepository.findAll(product?.categories)
+    }
+    if(product?.collection !== undefined) {
+      const collections: Collection[] = this.coll
+    }
 
     const newProduct = new Product(
-      product.name, product.detail,
-      product.colors, product.price,
-      product.sku, product.stock,
-      undefined,
-      undefined,
+      product.name,
+      product.detail,
+      product.colors,
+      product.price,
+      product.sku,
+      product.stock,
+      product
       categories,
       );
     this.productCatalogRepository.save(newProduct);

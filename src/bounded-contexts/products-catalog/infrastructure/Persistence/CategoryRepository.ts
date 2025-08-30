@@ -17,7 +17,7 @@ export class CategoryRepository implements ICategoryRepository {
         Id: In(ids)
       },
     }));
-    return this.;
+    return categories.map((category: CategorytEntity): Category => category.toDomainEntity(category));
   }
 
 }
