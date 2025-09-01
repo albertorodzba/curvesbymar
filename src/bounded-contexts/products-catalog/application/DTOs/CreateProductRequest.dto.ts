@@ -7,5 +7,5 @@ export class CreateProductRequestDto {
   sku?: string;
   stock?: number;
   categories?: number[];
-  collection?: number[];
+  collections?: number[];
 }

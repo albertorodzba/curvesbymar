@@ -7,6 +7,7 @@ import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCa
 import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetCatalogUseCase";
 import { CategoryRepository } from "./infrastructure/Persistence/CategoryRepository";
 import { FindOneProductUseCase } from "./application/UseCases/FindOneProductUseCase/FindOneProductUseCase";
+import { CollectionRepository } from "./infrastructure/Persistence/CollectionRepository";
 
 
 @Module({
@@ -28,6 +29,10 @@ import { FindOneProductUseCase } from "./application/UseCases/FindOneProductUseC
     {
       provide: "IFindOneProductUseCase",
       useClass: FindOneProductUseCase
+    },
+    {
+      provide: "ICollectionRepository",
+      useClass: CollectionRepository,
     }
   ],
 })

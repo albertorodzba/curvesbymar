@@ -7,21 +7,26 @@ import { Collection } from "../../../domain/Entities/Collection";
 import { CreateProductRequestDto } from '../../DTOs/CreateProductRequest.dto';
 import { CreateProductResponseDto } from '../../DTOs/CreateProductResponse.dto';
 import { ICategoryRepository } from "../../../domain/Ports/out/ICategoryRepository";
+import { ICollectionRepository } from "../../../domain/Ports/out/ICollectionRepository";
 
 @Injectable()
 export class CreateProductUseCase implements ICreateProductUseCase {
   constructor(
     @Inject("IProductCatalogRepository") private readonly productCatalogRepository: IProductCatalogRepository,
-    @Inject("ICategoryRepository") private readonly categoryRepository: ICategoryRepository
+    @Inject("ICategoryRepository") private readonly categoryRepository: ICategoryRepository,
+    @Inject("ICollectionRepository") private readonly collectionRepository: ICollectionRepository
   ) {}
 
-  run(product: CreateProductRequestDto): CreateProductResponseDto {
+  async run(product: CreateProductRequestDto): Promise<CreateProductResponseDto> {
+    let categories: Category[] = [];
+    let collections: Collection[] = [];
+
     // buscar que categorias y collections tiene el dto
     if (product?.categories !== undefined) {
-      const categories: Category[] = this.categoryRepository.findAll(product?.categories)
+      categories = await this.categoryRepository.findAll(product?.categories)
     }
-    if(product?.collection !== undefined) {
-      const collections: Collection[] = this.coll
+    if(product?.collections !== undefined) {
+      collections = await this.collectionRepository.findAll(product.collections);
     }
 
     const newProduct = new Product(
@@ -31,12 +36,16 @@ export class CreateProductUseCase implements ICreateProductUseCase {
       product.price,
       product.sku,
       product.stock,
-      product
-      categories,
+      collections,
+      product.imageUrl,
+      categories ?? undefined,
       );
-    this.productCatalogRepository.save(newProduct);
+    await this.productCatalogRepository.save(newProduct);
 
     // mapper al dto de response
-    return new CreateProductResponseDto();
+    const responseDTO = new CreateProductResponseDto()
+    responseDTO.productName = newProduct.name;
+    responseDTO.message = "Product added successfully.";
+    return responseDTO;
   }
 }
