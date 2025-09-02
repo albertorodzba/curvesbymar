@@ -8,31 +8,37 @@ import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetC
 import { CategoryRepository } from "./infrastructure/Persistence/CategoryRepository";
 import { FindOneProductUseCase } from "./application/UseCases/FindOneProductUseCase/FindOneProductUseCase";
 import { CollectionRepository } from "./infrastructure/Persistence/CollectionRepository";
+import { CreateProductUseCase } from "./application/UseCases/CreateProductUseCase/CreateProductUseCase";
+import { CategorytEntity } from "./infrastructure/Entities/Category.entity";
 
 
 @Module({
   controllers: [ProductCatalogController],
-  imports: [TypeOrmModule.forFeature([ ProductEntity, CollectionEntity])],
+  imports: [TypeOrmModule.forFeature([ ProductEntity, CollectionEntity, CategorytEntity])],
   providers: [
     {
       provide: "IProductCatalogRepository",
       useClass: ProductCatalogRepository,
     },
     {
-      provide: "IGetCatalogUseCase",
-      useClass: GetCatalogUseCase,
-    },
-    {
       provide: "ICategoryRepository",
       useClass: CategoryRepository
+    },
+    {
+      provide: "ICollectionRepository",
+      useClass: CollectionRepository,
+    },
+    {
+      provide: "IGetCatalogUseCase",
+      useClass: GetCatalogUseCase,
     },
     {
       provide: "IFindOneProductUseCase",
       useClass: FindOneProductUseCase
     },
     {
-      provide: "ICollectionRepository",
-      useClass: CollectionRepository,
+      provide: "ICreateProductUseCase",
+      useClass: CreateProductUseCase
     }
   ],
 })

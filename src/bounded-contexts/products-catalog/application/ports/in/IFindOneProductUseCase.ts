@@ -1,5 +1,5 @@
-import { ProductEntity } from "../../../infrastructure/Entities/Product.entity";
+import { Product } from "../../../domain/Entities/Product";
 
 export interface IFindOneProductUseCase {
-  run(id: number): Promise<ProductEntity>;
+  run(id: number): Promise<Product | null>;
 }

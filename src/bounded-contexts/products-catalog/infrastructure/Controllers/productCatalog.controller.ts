@@ -4,19 +4,20 @@ import { CreateProductResponseDto } from "../../application/DTOs/CreateProductRe
 import { IGetCatalogUseCase} from "../../application/ports/in/IGetCatalogUseCase";
 import { Product } from "../../domain/Entities/Product";
 import { ICreateProductUseCase } from "../../application/ports/in/ICreateProductUseCase";
+import { IFindOneProductUseCase } from '../../application/ports/in/IFindOneProductUseCase';
 
 @Controller("product-catalog")
 export class ProductCatalogController {
   constructor(
     @Inject("ICreateProductUseCase") private readonly createProductUseCase: ICreateProductUseCase,
-
+    @Inject("IFindOneProductUseCase") private readonly findOneProductUseCase: IFindOneProductUseCase,
     @Inject("IGetCatalogUseCase") private readonly getCatalogUseCase: IGetCatalogUseCase
   ) {}
 
   @Post()
-  create(@Body() request: CreateProductRequestDto): CreateProductResponseDto {
+  async create(@Body() request: CreateProductRequestDto): Promise<CreateProductResponseDto> {
     // return this.productCatalogService.create(createProductCatalogDto);
-    return this.createProductUseCase.run(request);
+    return await this.createProductUseCase.run(request);
   }
 
   @Get()
@@ -25,10 +26,11 @@ export class ProductCatalogController {
     return await this.getCatalogUseCase.run();
   }
 
+
   @Get(":id")
-  findOne(@Param("id") id: string) {
+  async findOne(@Param("id") id: string) {
     // return this.productCatalogService.findOne(+id);
-    return "";
+    return await this.findOneProductUseCase.run(Number(id));
   }
 
   @Patch(":id")

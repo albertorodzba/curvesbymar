@@ -30,7 +30,7 @@ export class ProductEntity {
   @Column({ nullable: true, default: 0 })
   Stock: number
 
-  @Column({ nullable: false, default: new Date() })
+  @Column({ nullable: false, default: () => "CURRENT_TIMESTAMP" })
   CreatedAt: Date
 
   @ManyToMany(() => CollectionEntity, (collection) => collection.Products)
