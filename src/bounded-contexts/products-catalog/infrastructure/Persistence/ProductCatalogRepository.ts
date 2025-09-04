@@ -2,11 +2,13 @@ import { IProductCatalogRepository } from "../../domain/Ports/out/IProductCatalo
 import { InjectRepository } from "@nestjs/typeorm";
 import { ProductEntity } from "../Entities/Product.entity";
 import { Repository } from "typeorm";
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { Product } from "../../domain/Entities/Product";
 
 @Injectable()
 export class ProductCatalogRepository implements IProductCatalogRepository {
+  private readonly logger = new Logger(ProductCatalogRepository.name);
+
   constructor(
     @InjectRepository(ProductEntity)
     private readonly productRepository: Repository<ProductEntity>,
@@ -23,7 +25,7 @@ export class ProductCatalogRepository implements IProductCatalogRepository {
     const product: ProductEntity | null = await this.productRepository.findOne({
       where: { Id: id }
     });
-
+    this.logger.log(`Product created with id ${id}`);
     if(product) return ProductEntity.toEntityDomain(product);
     return null;
   }

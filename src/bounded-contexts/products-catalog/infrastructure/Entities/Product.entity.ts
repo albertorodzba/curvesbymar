@@ -50,9 +50,9 @@ export class ProductEntity {
       product.UnitPrice,
       product.Sku,
       product.Stock,
-      product.Collections.map((collection) => collection.toDomainEntity(collection)),
+      product.Collections ? product.Collections.map((collection) => collection.toDomainEntity(collection)) : [],
       product.ImageUrl,
-      product.Categories.map((category) => category.toDomainEntity(category)),
+      product.Categories ? product.Categories.map((category) => category.toDomainEntity(category)) :[],
       product.Id);
   }
 
