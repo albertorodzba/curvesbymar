@@ -5,7 +5,9 @@ import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { ProductCatalogModule } from './bounded-contexts/products-catalog/productCatalog.module';
 import { ProductEntity } from "./bounded-contexts/products-catalog/infrastructure/Entities/Product.entity";
-import { CollectionEntity } from "./bounded-contexts/products-catalog/infrastructure/Entities/Collection.entity";
+import { CollectionEntity } from "./bounded-contexts/collections/infrastructure/Entities/Collection.entity";
+import { CollectionsModule } from './bounded-contexts/collections/collections.module';
+import { CategoriesModule } from './bounded-contexts/categories/categories.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { CollectionEntity } from "./bounded-contexts/products-catalog/infrastruc
       synchronize: true,
     }),
     ProductCatalogModule,
+    CollectionsModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

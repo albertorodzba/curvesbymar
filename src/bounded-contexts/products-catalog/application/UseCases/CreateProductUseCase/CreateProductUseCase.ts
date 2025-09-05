@@ -2,12 +2,12 @@ import { Inject, Injectable } from "@nestjs/common";
 import { ICreateProductUseCase} from "../../ports/in/ICreateProductUseCase";
 import { IProductCatalogRepository } from "../../../domain/Ports/out/IProductCatalogRepository";
 import { Product } from "../../../domain/Entities/Product";
-import { Category } from "../../../domain/Entities/Category";
-import { Collection } from "../../../domain/Entities/Collection";
+import { Category } from "../../../../categories/domain/Entities/Category";
+import { Collection } from "../../../../collections/domain/Entities/Collection";
 import { CreateProductRequestDto } from '../../DTOs/CreateProductRequest.dto';
 import { CreateProductResponseDto } from '../../DTOs/CreateProductResponse.dto';
-import { ICategoryRepository } from "../../../domain/Ports/out/ICategoryRepository";
-import { ICollectionRepository } from "../../../domain/Ports/out/ICollectionRepository";
+import { ICategoryRepository } from "../../../../categories/domain/Ports/out/ICategoryRepository";
+import { ICollectionRepository } from "../../../../collections/domain/Ports/out/ICollectionRepository";
 
 @Injectable()
 export class CreateProductUseCase implements ICreateProductUseCase {

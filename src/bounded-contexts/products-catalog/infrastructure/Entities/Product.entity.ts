@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
-import { CollectionEntity } from './Collection.entity';
-import { CategorytEntity } from "./Category.entity";
+import { CollectionEntity } from '../../../collections/infrastructure/Entities/Collection.entity';
+import { CategorytEntity } from "../../../categories/infrastructure/Entities/Category.entity";
 import { Product } from "../../domain/Entities/Product";
-import { Category } from "../../domain/Entities/Category";
+import { Category } from "../../../categories/domain/Entities/Category";
 
 @Entity({ name: "product"})
 export class ProductEntity {
