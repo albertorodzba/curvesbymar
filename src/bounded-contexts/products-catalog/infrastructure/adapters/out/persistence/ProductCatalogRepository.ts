@@ -1,9 +1,9 @@
-import { IProductCatalogRepository } from "../../domain/Ports/out/IProductCatalogRepository";
+import { IProductCatalogRepository } from "../../../../domain/ports/out/IProductCatalogRepository";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ProductEntity } from "../Entities/Product.entity";
+import { ProductEntity } from "../../../entities/Product.entity";
 import { Repository } from "typeorm";
 import { Injectable, Logger } from "@nestjs/common";
-import { Product } from "../../domain/Entities/Product";
+import { Product } from "../../../../domain/entities/Product";
 
 @Injectable()
 export class ProductCatalogRepository implements IProductCatalogRepository {

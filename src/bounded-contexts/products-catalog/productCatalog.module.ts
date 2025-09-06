@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
-import { ProductCatalogController } from "./infrastructure/Controllers/productCatalog.controller";
+import { ProductCatalogController } from "./infrastructure/adapters/in/controllers/productCatalog.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { ProductEntity } from "./infrastructure/Entities/Product.entity";
-import { ProductCatalogRepository } from "./infrastructure/Persistence/ProductCatalogRepository";
-import { GetCatalogUseCase } from "./application/UseCases/GetCatalogUseCase/GetCatalogUseCase";
-import { FindOneProductUseCase } from "./application/UseCases/FindOneProductUseCase/FindOneProductUseCase";
-import { CreateProductUseCase } from "./application/UseCases/CreateProductUseCase/CreateProductUseCase";
+import { ProductEntity } from "./infrastructure/entities/Product.entity";
+import { ProductCatalogRepository } from "./infrastructure/adapters/out/persistence/ProductCatalogRepository";
+import { GetCatalogUseCase } from "./application/useCases/GetCatalogUseCase/GetCatalogUseCase";
+import { FindOneProductUseCase } from "./application/useCases/FindOneProductUseCase/FindOneProductUseCase";
+import { CreateProductUseCase } from "./application/useCases/CreateProductUseCase/CreateProductUseCase";
 
 
 @Module({

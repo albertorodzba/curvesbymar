@@ -1,5 +1,5 @@
-import { Collection } from "../../../collections/domain/Entities/Collection";
-import { Category } from "../../../categories/domain/Entities/Category";
+import { Collection } from "../../../collections/domain/entities/Collection";
+import { Category } from "../../../categories/domain/entities/Category";
 
 export class Product {
   readonly id: number;

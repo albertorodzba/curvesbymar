@@ -1,13 +1,13 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { ICreateProductUseCase} from "../../ports/in/ICreateProductUseCase";
-import { IProductCatalogRepository } from "../../../domain/Ports/out/IProductCatalogRepository";
-import { Product } from "../../../domain/Entities/Product";
-import { Category } from "../../../../categories/domain/Entities/Category";
-import { Collection } from "../../../../collections/domain/Entities/Collection";
-import { CreateProductRequestDto } from '../../DTOs/CreateProductRequest.dto';
-import { CreateProductResponseDto } from '../../DTOs/CreateProductResponse.dto';
-import { ICategoryRepository } from "../../../../categories/domain/Ports/out/ICategoryRepository";
-import { ICollectionRepository } from "../../../../collections/domain/Ports/out/ICollectionRepository";
+import { IProductCatalogRepository } from "../../../domain/ports/out/IProductCatalogRepository";
+import { Product } from "../../../domain/entities/Product";
+import { Category } from "../../../../categories/domain/entities/Category";
+import { Collection } from "../../../../collections/domain/entities/Collection";
+import { CreateProductRequestDto } from '../../dtos/CreateProductRequest.dto';
+import { CreateProductResponseDto } from '../../dtos/CreateProductResponse.dto';
+import { ICategoryRepository } from "../../../../categories/domain/ports/out/ICategoryRepository";
+import { ICollectionRepository } from "../../../../collections/domain/ports/out/ICollectionRepository";
 
 @Injectable()
 export class CreateProductUseCase implements ICreateProductUseCase {

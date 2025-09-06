@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nestjs/common";
-import { CreateProductRequestDto } from "../../application/DTOs/CreateProductRequest.dto";
-import { CreateProductResponseDto } from "../../application/DTOs/CreateProductResponse.dto";
-import { IGetCatalogUseCase} from "../../application/ports/in/IGetCatalogUseCase";
-import { Product } from "../../domain/Entities/Product";
-import { ICreateProductUseCase } from "../../application/ports/in/ICreateProductUseCase";
-import { IFindOneProductUseCase } from '../../application/ports/in/IFindOneProductUseCase';
+import { CreateProductRequestDto } from "../../../../application/dtos/CreateProductRequest.dto";
+import { CreateProductResponseDto } from "../../../../application/dtos/CreateProductResponse.dto";
+import { IGetCatalogUseCase} from "../../../../application/ports/in/IGetCatalogUseCase";
+import { ICreateProductUseCase } from "../../../../application/ports/in/ICreateProductUseCase";
+import { IFindOneProductUseCase } from '../../../../application/ports/in/IFindOneProductUseCase';
+import { Product } from "../../../../domain/entities/Product";
 
 @Controller("product-catalog")
 export class ProductCatalogController {

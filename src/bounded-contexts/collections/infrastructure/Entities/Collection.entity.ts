@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ProductEntity } from "../../../products-catalog/infrastructure/Entities/Product.entity";
-import { Collection } from "../../domain/Entities/Collection";
+import { ProductEntity } from "../../../products-catalog/infrastructure/entities/Product.entity";
+import { Collection } from "../../domain/entities/Collection";
 
 @Entity({ name: "collection" })
 export class CollectionEntity {

@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from "typeorm";
-import { ProductEntity } from "../../../products-catalog/infrastructure/Entities/Product.entity";
-import { Category } from "../../domain/Entities/Category";
+import { ProductEntity } from "../../../products-catalog/infrastructure/entities/Product.entity";
+import { Category } from "../../domain/entities/Category";
 
 @Entity({ name: "category"})
 export class CategorytEntity {

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { IFindOneProductUseCase } from "../../ports/in/IFindOneProductUseCase";
-import { IProductCatalogRepository } from "../../../domain/Ports/out/IProductCatalogRepository";
-import { Product } from "../../../domain/Entities/Product";
+import { IProductCatalogRepository } from "../../../domain/ports/out/IProductCatalogRepository";
+import { Product } from "../../../domain/entities/Product";
 
 @Injectable()
 export class FindOneProductUseCase implements IFindOneProductUseCase {

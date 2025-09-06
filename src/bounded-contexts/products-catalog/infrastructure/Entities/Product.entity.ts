@@ -1,8 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
-import { CollectionEntity } from '../../../collections/infrastructure/Entities/Collection.entity';
-import { CategorytEntity } from "../../../categories/infrastructure/Entities/Category.entity";
-import { Product } from "../../domain/Entities/Product";
-import { Category } from "../../../categories/domain/Entities/Category";
+import { CollectionEntity } from '../../../collections/infrastructure/entities/Collection.entity';
+import { CategorytEntity } from "../../../categories/infrastructure/entities/Category.entity";
+import { Product } from "../../domain/entities/Product";
 
 @Entity({ name: "product"})
 export class ProductEntity {

@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { CollectionRepository } from "./infrastructure/Persistence/CollectionRepository";
+import { CollectionRepository } from "./infrastructure/ports/out/persistence/CollectionRepository";
 
 @Module({
   controllers: [],
