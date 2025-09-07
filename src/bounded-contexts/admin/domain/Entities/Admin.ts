@@ -1,4 +1,4 @@
-import { Email } from "../../../shared/domain/ValueObjects/Email";
+import { Email } from "../../../shared/domain/valueObjects/Email";
 
 export class Admin {
   constructor(
