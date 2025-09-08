@@ -23,7 +23,7 @@ export class CreateProductUseCase implements ICreateProductUseCase {
 
     // buscar que categorias y collections tiene el dto
     if (product?.categories !== undefined) {
-      categories = await this.categoryRepository.findAll(product?.categories)
+      categories = await this.categoryRepository.findBy(product?.categories)
     }
     if(product?.collections !== undefined) {
       collections = await this.collectionRepository.findAll(product.collections);

@@ -21,7 +21,7 @@ export class ProductCatalogController {
   }
 
   @Get()
-  async findAll():Promise<Product[]> {
+  async getAll():Promise<Product[]> {
     // return this.productCatalogService.findAll();
     return await this.getCatalogUseCase.run();
   }

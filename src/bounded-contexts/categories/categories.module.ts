@@ -3,6 +3,10 @@ import { CategoriesController } from './infrastructure/adapters/in/controllers/c
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { CategorytEntity } from "./infrastructure/entities/Category.entity";
 import { CategoryRepository } from "./infrastructure/adapters/out/persistence/CategoryRepository";
+import {
+  CreateCategoryUseCase
+} from "@/bounded-contexts/categories/application/useCases/CreateCategoryUseCase/CreateCategoryUseCase";
+import { GetAllUseCase } from "@/bounded-contexts/categories/application/useCases/GetAllUseCase/GetAllUseCase";
 
 @Module({
   controllers: [CategoriesController],
@@ -12,6 +16,15 @@ import { CategoryRepository } from "./infrastructure/adapters/out/persistence/Ca
       provide: "ICategoryRepository",
       useClass: CategoryRepository
     },
-  ]
+    {
+      provide: "ICreateCategoryUseCase",
+      useClass: CreateCategoryUseCase,
+    },
+    {
+      provide: "IGetAllCategoriesUseCase",
+      useClass: GetAllUseCase
+    }
+  ],
+  exports: ["ICategoryRepository"],
 })
 export class CategoriesModule {}

@@ -6,11 +6,17 @@ import { ProductCatalogRepository } from "./infrastructure/adapters/out/persiste
 import { GetCatalogUseCase } from "./application/useCases/GetCatalogUseCase/GetCatalogUseCase";
 import { FindOneProductUseCase } from "./application/useCases/FindOneProductUseCase/FindOneProductUseCase";
 import { CreateProductUseCase } from "./application/useCases/CreateProductUseCase/CreateProductUseCase";
+import { CategoriesModule } from "@/bounded-contexts/categories/categories.module";
+import { CollectionsModule } from "@/bounded-contexts/collections/collections.module";
 
 
 @Module({
   controllers: [ProductCatalogController],
-  imports: [TypeOrmModule.forFeature([ ProductEntity ])],
+  imports: [
+    TypeOrmModule.forFeature([ ProductEntity ]),
+    CategoriesModule,
+    CollectionsModule,
+  ],
   providers: [
     {
       provide: "IProductCatalogRepository",

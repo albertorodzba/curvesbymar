@@ -10,5 +10,6 @@ import { CollectionRepository } from "./infrastructure/adapters/out/persistence/
       useClass: CollectionRepository,
     },
   ],
+  exports: ["ICollectionRepository"],
 })
 export class CollectionsModule {}

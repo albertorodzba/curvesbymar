@@ -1,5 +1,6 @@
-import { CreateCategoryResponseDto } from "../../dtos/CreateCategoryResponse.dtot";
+import { CreateCategoryResponseDto } from "../../dtos/CreateCategoryResponse.dto";
+import { CreateCategoryRequestDto} from "../../dtos/CreateCategoryRequest.dto";
 
 export interface ICreateCategoryUseCase {
-  run(): Promise<CreateCategoryResponseDto>;
+  run(request: CreateCategoryRequestDto): Promise<CreateCategoryResponseDto>;
 }
