@@ -1,0 +1,16 @@
+import { Inject, Injectable } from "@nestjs/common";
+import { ICollectionRepository } from "@/bounded-contexts/collections/domain/ports/out/ICollectionRepository";
+import {
+  UpdateCollectionRequestDto
+} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionRequest.dto";
+import {
+  UpdateCollectionResponseDto
+} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionResponse.dto";
+
+@Injectable()
+export class UpdateCollectionUseCase {
+  constructor(@Inject("ICollectionRepository") private readonly collectionRepository: ICollectionRepository) {
+  }
+
+  async run(collectiondto: UpdateCollectionRequestDto): Promise<UpdateCollectionResponseDto> {}
+}
