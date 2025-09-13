@@ -9,6 +9,7 @@ export const messages = {
     success: {
       added: "Collection added successfully",
       deleted: "Collection deleted successfully",
+      updated: "Collecion updated succesfully"
     }
   },
   category: {
