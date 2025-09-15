@@ -1,10 +1,10 @@
 import {
-  UpdateCollectionRequestDto
-} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionRequest.dto";
+  UpdateCollectionCommandDto
+} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionCommand.dto";
 import {
-  UpdateCollectionResponseDto
-} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionResponse.dto";
+  UpdateCollectionResultDto
+} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionResult.dto";
 
 export interface IUpdateCollectionUseCase {
-  run(request: UpdateCollectionRequestDto): Promise<UpdateCollectionResponseDto>;
+  run(request: UpdateCollectionCommandDto): Promise<UpdateCollectionResultDto>;
 }

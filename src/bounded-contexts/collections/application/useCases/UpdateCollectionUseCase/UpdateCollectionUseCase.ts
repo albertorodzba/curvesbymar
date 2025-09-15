@@ -1,27 +1,28 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { ICollectionRepository } from "@/bounded-contexts/collections/domain/ports/out/ICollectionRepository";
 import {
-  UpdateCollectionRequestDto
-} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionRequest.dto";
+  UpdateCollectionCommandDto
+} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionCommand.dto";
 import {
-  UpdateCollectionResponseDto
-} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionResponse.dto";
+  UpdateCollectionResultDto
+} from "@/bounded-contexts/collections/application/dtos/UpdateCollectionResult.dto";
 import { messages } from "@/messages";
 import { Collection } from "@/bounded-contexts/collections/domain/entities/Collection";
+import { IUpdateCollectionUseCase } from "@/bounded-contexts/collections/application/ports/in/IUpdateCollectionUseCase";
 
 
 @Injectable()
-export class UpdateCollectionUseCase {
+export class UpdateCollectionUseCase implements IUpdateCollectionUseCase {
   constructor(@Inject("ICollectionRepository") private readonly collectionRepository: ICollectionRepository) {
   }
 
-  async run(collectiondto: UpdateCollectionRequestDto): Promise<UpdateCollectionResponseDto> {
+  async run(collectiondto: UpdateCollectionCommandDto): Promise<UpdateCollectionResultDto> {
     const collection: Collection = await this.collectionRepository.findById(collectiondto.id);
 
     collection.name = collectiondto.name;
     await this.collectionRepository.update(collection);
 
-    const result = new UpdateCollectionResponseDto();
+    const result = new UpdateCollectionResultDto();
     result.message = messages.collection.success.updated;
     return result;
   }

@@ -1,11 +1,11 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { ICreateCollectionUseCase } from "@/bounded-contexts/collections/application/ports/in/ICreateCollectionUseCase";
 import {
-  CreateCollectionRequestDto
-} from "@/bounded-contexts/collections/application/dtos/CreateCollectionRequest.dto";
+  CreateCollectionCommandDto
+} from "@/bounded-contexts/collections/application/dtos/CreateCollectionCommand.dto";
 import {
-  CreateCollectionResponseDto
-} from "@/bounded-contexts/collections/application/dtos/CreateCollectionResponse.dto";
+  CreateCollectionResultDto
+} from "@/bounded-contexts/collections/application/dtos/CreateCollectionResult.dto";
 import { Collection } from "@/bounded-contexts/collections/domain/entities/Collection";
 import { ICollectionRepository } from "@/bounded-contexts/collections/domain/ports/out/ICollectionRepository";
 import { messages } from "@/messages";
@@ -14,10 +14,10 @@ import { messages } from "@/messages";
 export class CreateCollectionUseCase implements ICreateCollectionUseCase {
   constructor(@Inject("ICollectionRepository") private readonly collectionRepository: ICollectionRepository) {}
 
-  async run(request: CreateCollectionRequestDto): Promise<CreateCollectionResponseDto> {
+  async run(request: CreateCollectionCommandDto): Promise<CreateCollectionResultDto> {
     const collection: Collection = new Collection(request.name);
     await this.collectionRepository.create(collection);
-    const response = new CreateCollectionResponseDto();
+    const response = new CreateCollectionResultDto();
     response.message = messages.collection.success.added;
     return response;
 

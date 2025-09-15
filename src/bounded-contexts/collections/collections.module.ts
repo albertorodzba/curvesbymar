@@ -3,6 +3,9 @@ import { CollectionRepository } from "./infrastructure/adapters/out/persistence/
 import {
   CreateCollectionUseCase
 } from "@/bounded-contexts/collections/application/useCases/CreateCollectionUseCase/CreateCollectionUseCase";
+import {
+  UpdateCollectionUseCase
+} from "@/bounded-contexts/collections/application/useCases/UpdateCollectionUseCase/UpdateCollectionUseCase";
 
 @Module({
   controllers: [],
@@ -15,6 +18,13 @@ import {
     {
       provide: "ICreateCollectionUseCase",
       useClass: CreateCollectionUseCase,
+    },
+    {
+      provide: "IUpdateCollectionUseCase",
+      useClass: UpdateCollectionUseCase,
+    },
+    {
+      provide: "IDelete"
     }
   ],
   exports: ["ICollectionRepository"],

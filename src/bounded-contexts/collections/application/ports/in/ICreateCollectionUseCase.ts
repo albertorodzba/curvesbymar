@@ -1,10 +1,10 @@
 import {
-  CreateCollectionRequestDto
-} from "@/bounded-contexts/collections/application/dtos/CreateCollectionRequest.dto";
+  CreateCollectionCommandDto
+} from "@/bounded-contexts/collections/application/dtos/CreateCollectionCommand.dto";
 import {
-  CreateCollectionResponseDto
-} from "@/bounded-contexts/collections/application/dtos/CreateCollectionResponse.dto";
+  CreateCollectionResultDto
+} from "@/bounded-contexts/collections/application/dtos/CreateCollectionResult.dto";
 
 export interface ICreateCollectionUseCase {
-  run(request: CreateCollectionRequestDto): Promise<CreateCollectionResponseDto>;
+  run(request: CreateCollectionCommandDto): Promise<CreateCollectionResultDto>;
 }
