@@ -6,6 +6,9 @@ import {
 import {
   UpdateCollectionUseCase
 } from "@/bounded-contexts/collections/application/useCases/UpdateCollectionUseCase/UpdateCollectionUseCase";
+import {
+  DeleteCollectionUseCase
+} from "@/bounded-contexts/collections/application/useCases/DeleteCollectionUseCase/DeleteCollectionUseCase";
 
 @Module({
   controllers: [],
@@ -24,7 +27,8 @@ import {
       useClass: UpdateCollectionUseCase,
     },
     {
-      provide: "IDelete"
+      provide: "IDeleteCollectionUseCase",
+      useClass: DeleteCollectionUseCase,
     }
   ],
   exports: ["ICollectionRepository"],

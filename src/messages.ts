@@ -10,6 +10,9 @@ export const messages = {
       added: "Collection added successfully",
       deleted: "Collection deleted successfully",
       updated: "Collecion updated succesfully"
+    },
+    error: {
+      found: "Collection not found"
     }
   },
   category: {

@@ -13,7 +13,7 @@ export class CollectionEntity {
   @ManyToMany(() => ProductEntity, (product) => product.Collections)
   Products: ProductEntity[];
 
-  toDomainEntity(collection: CollectionEntity): Collection {
+  static toDomainEntity(collection: CollectionEntity): Collection {
     return new Collection( collection.Name, collection.Id );
   }
 

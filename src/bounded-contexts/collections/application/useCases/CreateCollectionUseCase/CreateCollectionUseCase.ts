@@ -16,10 +16,12 @@ export class CreateCollectionUseCase implements ICreateCollectionUseCase {
 
   async run(request: CreateCollectionCommandDto): Promise<CreateCollectionResultDto> {
     const collection: Collection = new Collection(request.name);
+
     await this.collectionRepository.create(collection);
+
     const response = new CreateCollectionResultDto();
+
     response.message = messages.collection.success.added;
     return response;
-
   }
 }
