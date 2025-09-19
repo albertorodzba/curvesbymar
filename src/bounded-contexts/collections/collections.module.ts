@@ -9,6 +9,9 @@ import {
 import {
   DeleteCollectionUseCase
 } from "@/bounded-contexts/collections/application/useCases/DeleteCollectionUseCase/DeleteCollectionUseCase";
+import {
+  FindByIdCollectionUseCase
+} from "@/bounded-contexts/collections/application/useCases/FindByIdCollectionUseCase/FindByIdCollectionUseCase";
 
 @Module({
   controllers: [],
@@ -29,6 +32,10 @@ import {
     {
       provide: "IDeleteCollectionUseCase",
       useClass: DeleteCollectionUseCase,
+    },
+    {
+      provide: "IFindByIdCollectionUseCase",
+      useClass: FindByIdCollectionUseCase,
     }
   ],
   exports: ["ICollectionRepository"],
