@@ -1,9 +1,17 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nestjs/common";
-import { CreateProductRequestDto } from "@/bounded-contexts/products-catalog/application/dtos/CreateProductRequest.dto";
+import { IGetAllCollectionUseCase } from '@/bounded-contexts/collections/application/ports/in/IGetAllCollectionUseCase';
 import {
-  CreateProductResponseDto
-} from "@/bounded-contexts/products-catalog/application/dtos/CreateProductResponse.dto";
-import { Product } from "@/bounded-contexts/products-catalog/domain/entities/Product";
+  IFindByIdCollectionUseCase
+} from '@/bounded-contexts/collections/application/ports/in/IFindByIdCollectionUseCase';
+import { ICreateCollectionUseCase } from "@/bounded-contexts/collections/application/ports/in/ICreateCollectionUseCase";
+import { IUpdateCollectionUseCase } from '@/bounded-contexts/collections/application/ports/in/IUpdateCollectionUseCase';
+import { IDeleteCollectionUseCase } from '@/bounded-contexts/collections/application/ports/in/IDeleteCollectionUseCase';
+import {
+  CreateCollectionRequestDto
+} from '@/bounded-contexts/collections/infrastructure/dtos/CreateCollectionRequest.dto';
+import {
+  CreateCollectionResponseDto
+} from "@/bounded-contexts/collections/infrastructure/dtos/CreateCollectionResponse.dto";
 
 @Controller("collections")
 export class CollectionController {
@@ -16,13 +24,13 @@ export class CollectionController {
   ) {}
 
   @Post()
-  async create(@Body() request: CreateProductRequestDto): Promise<CreateProductResponseDto> {
-    // return this.productCatalogService.create(createProductCatalogDto);
-    return await this.createCollectionUseCase.run(request);
+  async create(@Body() request: CreateCollectionRequestDto): Promise<CreateCollectionResponseDto> {
+    const response: CreateCol
+    return ;
   }
 
   @Get()
-  async getAll():Promise<Product[]> {
+  async getAll(): Promise<GetAllCollectionResponseDto> {
     // return this.productCatalogService.findAll();
     return await this.getCatalogUseCase.run();
   }
