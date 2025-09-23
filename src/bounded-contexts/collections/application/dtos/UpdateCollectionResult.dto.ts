@@ -1,3 +1,3 @@
 export class UpdateCollectionResultDto {
-  message?: string;
+  message: string;
 }

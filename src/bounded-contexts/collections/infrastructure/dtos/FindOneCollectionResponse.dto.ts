@@ -1,8 +1,7 @@
 import { Collection } from "@/bounded-contexts/collections/domain/entities/Collection";
 
-
-export class GetAllCollectionResponseDto {
+export class FindOneCollectionResponseDto {
   statusCode: number;
-  message: string;
-  data: Collection[];
+  message?: string;
+  data: Collection;
 }
