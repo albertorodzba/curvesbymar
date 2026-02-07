@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Inject } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, Delete, Inject, HttpCode } from "@nestjs/common";
 import { IGetAllCollectionUseCase } from '@/bounded-contexts/collections/application/ports/in/IGetAllCollectionUseCase';
 import {
   IFindByIdCollectionUseCase
@@ -51,17 +51,21 @@ export class CollectionController {
   ) {}
 
   @Post()
+  @HttpCode(201)
   async create(@Body() request: CreateCollectionRequestDto): Promise<CreateCollectionResponseDto> {
     const response: CreateCollectionResponseDto = new CreateCollectionResponseDto();
     const commandUseCase: CreateCollectionCommandDto = new CreateCollectionCommandDto();
 
     commandUseCase.name = request.name;
     const result: CreateCollectionResultDto = await this.createCollectionUseCase.run(commandUseCase);
-    if (result) response.statusCode = 200; response.message = result.message;
+    if (result) {
+      response.message = result.message;
+    }
     return response;
   }
 
   @Get()
+  @HttpCode(200)
   async getAll(): Promise<GetAllCollectionResponseDto> {
     const response: GetAllCollectionResponseDto = new GetAllCollectionResponseDto();
     const result: GetAllCollectionResultDto = await this.getAllCollectionUseCase.run();
